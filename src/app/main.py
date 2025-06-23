@@ -353,7 +353,7 @@ with st.sidebar:
     """, height=140)
 
     st.markdown("---")
-    if st.button("🗑️ Clear History", use_container_width=True):
+    if st.button("🗑️ Clear History", width="stretch"):
         st.session_state.messages = []
         st.rerun()
 
@@ -592,7 +592,7 @@ with tab_eval:
             "Reasoning": ["78%", "89%", "91%", "94%"],
             "Coding": ["82%", "85%", "92%", "93%"],
             "VRAM Usage": ["3.4GB", "3.6GB", "3.8GB", "3.9GB"]
-        }, use_container_width=True)
+        }, width="stretch")
     
     with col2:
         st.markdown("**Multilingual Profile: Pavi Neural**")
