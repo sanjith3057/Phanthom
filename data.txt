@@ -21,3 +21,4 @@ Commit date: 2025-12-04T09:02:46 +0530 - Message: improve structure
 Commit date: 2025-12-05T16:09:22 +0530 - Message: fix boundary condition
 Commit date: 2025-12-13T10:25:25 +0530 - Message: cleanup whitespace
 Commit date: 2025-12-16T12:04:10 +0530 - Message: add docstring
+Commit date: 2025-12-18T12:44:46 +0530 - Message: adjust formatting
