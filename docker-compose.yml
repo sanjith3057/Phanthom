@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  phantom-jarvis:
+    build: .
+    container_name: phantom-jarvis
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./database:/app/database
+      - ./outputs:/app/outputs
+      - ./models:/app/models
+    environment:
+      - PERPLEXICA_API_URL=${PERPLEXICA_API_URL}
+      - PERPLEXICA_API_KEY=${PERPLEXICA_API_KEY}
+    restart: always

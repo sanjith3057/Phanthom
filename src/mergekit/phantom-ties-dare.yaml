@@ -1,0 +1,19 @@
+models:
+  - model: Qwen/Qwen2.5-3B-Instruct
+    parameters:
+      density: 0.7        # DARE: keep 70% of Qwen's deltas
+      weight: 1.0
+  - model: Qwen/Qwen2.5-Coder-3B-Instruct
+    parameters:
+      density: 0.7        # DARE: keep 70% of Coder's deltas
+      weight: 1.0
+
+merge_method: ties
+base_model: Qwen/Qwen2.5-3B-Instruct   # Reference base for delta computation
+
+parameters:
+  normalize: true          # Normalize merged weights
+  int8_mask: true          # Integer mask for sign election
+
+dtype: bfloat16
+tokenizer_source: union

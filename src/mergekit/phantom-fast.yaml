@@ -1,0 +1,11 @@
+models:
+  - model: Qwen/Qwen2.5-3B-Instruct
+    parameters:
+      weight: 0.5
+  - model: Qwen/Qwen2.5-Coder-3B-Instruct
+    parameters:
+      weight: 0.5
+
+merge_method: linear
+dtype: bfloat16
+tokenizer_source: union

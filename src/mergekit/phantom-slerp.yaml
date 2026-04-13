@@ -1,0 +1,23 @@
+models:
+  - model: Qwen/Qwen2.5-3B-Instruct
+    parameters:
+      weight: 1.0
+  - model: Qwen/Qwen2.5-Coder-3B-Instruct
+    parameters:
+      weight: 1.0
+
+merge_method: slerp
+base_model: Qwen/Qwen2.5-3B-Instruct
+
+parameters:
+  t:
+    - filter: self_attn
+      value: 0.5          # Attention layers: equal blend
+    - filter: mlp
+      value: 0.6          # MLP layers: Bias towards Coder
+    - filter: lm_head
+      value: 0.5          # Output head: equal blend
+    - value: 0.5          # Default: equal blend
+
+dtype: bfloat16
+tokenizer_source: union

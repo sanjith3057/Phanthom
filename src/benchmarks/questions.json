@@ -1,0 +1,62 @@
+[
+    {
+        "id": "Q1",
+        "category": "Reasoning",
+        "question": "If a farmer has 15 cows, and all but 8 die, how many are left?",
+        "expected_concept": "8"
+    },
+    {
+        "id": "Q2",
+        "category": "Reasoning",
+        "question": "A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?",
+        "expected_concept": "0.05"
+    },
+    {
+        "id": "Q3",
+        "category": "Reasoning",
+        "question": "What is the next number in the sequence: 2, 6, 12, 20, 30, ...?",
+        "expected_concept": "42"
+    },
+    {
+        "id": "Q4",
+        "category": "Reasoning",
+        "question": "Mary's father has five daughters: 1. Nana, 2. Nene, 3. Nini, 4. Nono. What is the name of the fifth daughter?",
+        "expected_concept": "Mary"
+    },
+    {
+        "id": "Q5",
+        "category": "Coding",
+        "question": "Write a Python function to compute the nth Fibonacci number recursively.",
+        "expected_concept": "def fib(n):"
+    },
+    {
+        "id": "Q6",
+        "category": "Coding",
+        "question": "What is wrong with this code? `def add(a, b=None):\n  if b is None:\n    b = 0\n  return a + b`",
+        "expected_concept": "Nothing is strictly wrong, but it can be simplified to `def add(a, b=0): return a + b`"
+    },
+    {
+        "id": "Q7",
+        "category": "Coding",
+        "question": "Write a Python list comprehension that returns all even numbers from 1 to 20.",
+        "expected_concept": "[x for x in range(1, 21) if x % 2 == 0]"
+    },
+    {
+        "id": "Q8",
+        "category": "Instruction Following",
+        "question": "Output the word 'SUCCESS' exactly three times, separated by commas, with no other text.",
+        "expected_concept": "SUCCESS, SUCCESS, SUCCESS"
+    },
+    {
+        "id": "Q9",
+        "category": "Instruction Following",
+        "question": "Format the following data as a JSON object with keys 'name', 'age', and 'city': John is 30 years old and lives in New York.",
+        "expected_concept": "{"
+    },
+    {
+        "id": "Q10",
+        "category": "Instruction Following",
+        "question": "Write a sentence containing exactly five words. Every word must start with the letter 'c'.",
+        "expected_concept": "Cats caught crazy colorful caterpillars"
+    }
+]

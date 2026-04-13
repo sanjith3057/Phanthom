@@ -1,0 +1,100 @@
+{
+  "project": {
+    "name": "PHANTOM-3B",
+    "version": "0.1.0",
+    "sprint": "Week 2, Day 1",
+    "operation": "Operation: Get Noticed"
+  },
+
+  "models": {
+    "parent_1": {
+      "id": "Qwen/Qwen2.5-3B-Instruct",
+      "local_path": "./models/qwen",
+      "specialization": "reasoning, instruction following, multilingual",
+      "license": "Apache-2.0"
+    },
+    "parent_2": {
+      "id": "microsoft/Phi-3.5-mini-instruct",
+      "local_path": "./models/phi",
+      "specialization": "coding, structured output, concise prose",
+      "license": "MIT"
+    },
+    "phantom_slerp": {
+      "local_path": "./outputs/phantom-slerp",
+      "merge_method": "slerp",
+      "t": 0.5,
+      "hf_repo": null
+    },
+    "phantom_ties": {
+      "local_path": "./outputs/phantom-ties",
+      "merge_method": "ties+dare",
+      "density": 0.7,
+      "hf_repo": null
+    }
+  },
+
+  "merge": {
+    "dtype": "bfloat16",
+    "tokenizer_source": "union",
+    "allow_crimes": true,
+    "slerp": {
+      "t_attention": 0.5,
+      "t_mlp": 0.4,
+      "t_default": 0.5
+    },
+    "ties": {
+      "density": 0.7,
+      "normalize": true,
+      "int8_mask": true
+    }
+  },
+
+  "benchmark": {
+    "questions_path": "src/benchmarks/questions.json",
+    "output_dir": "outputs/",
+    "generation": {
+      "max_new_tokens": 256,
+      "temperature": 0.0,
+      "do_sample": false,
+      "repetition_penalty": 1.1
+    },
+    "categories": ["reasoning", "coding", "instruction"],
+    "total_questions": 10
+  },
+
+  "app": {
+    "default_model": "phantom-ties",
+    "default_reasoning_mode": "chain-of-thought",
+    "token_budget": 4096,
+    "web_search_enabled": false,
+    "database_path": "database/phantom.db"
+  },
+
+  "security": {
+    "promptshield_tier1": true,
+    "promptshield_tier2": false,
+    "promptshield_tier3": true,
+    "confidence_threshold": 0.6,
+    "log_blocked_requests": true
+  },
+
+  "forum_protocol": {
+    "phases": ["Filter", "Observe", "Reason", "Understand", "Memory"],
+    "complexity_thresholds": {
+      "direct": 0.4,
+      "cot": 0.65,
+      "tot": 0.85,
+      "sc_cot": 1.0
+    }
+  },
+
+  "characters": {
+    "active": [
+      "Batman", "Iron Man", "Captain America", "Spider-Man", "Hawkeye",
+      "Shikamaru", "Madara", "Kakashi", "Itachi", "Senku", "L",
+      "Max Tennyson", "Rook Blonko", "Ben 10",
+      "MS Dhoni", "Ruturaj Gaikwad", "Suresh Raina"
+    ],
+    "primary_operational": ["L", "Itachi", "Shikamaru", "Batman", "Raina"]
+  }
+}

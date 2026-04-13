@@ -1,0 +1,53 @@
+{
+    "version": "1.0.0",
+    "description": "PHANTOM Source of Truth: Mapping Hardware Constraints to Engineering Mandates.",
+    "nodes": {
+        "4GB VRAM": {
+            "type": "Constraint",
+            "optimizations": ["4-bit GGUF", "Flash Attention 2", "KV Cache Quantization"],
+            "warning": "Avoid FP16 models; 100% risk of OOM.",
+            "edges": ["MANDATES:4-bit GGUF", "REQUIRES:CPU_Offload"]
+        },
+        "Jetson Orin Nano": {
+            "type": "Hardware",
+            "spec": "4GB or 8GB Unified Memory, Ampere Architecture",
+            "optimizations": ["NVIDIA TensorRT", "nvpmodel -m 0 (Max Power)", "JetPack 6.0+"],
+            "edges": ["MANDATES:4GB VRAM", "REQUIRES:No_Heavy_Swap"]
+        },
+        "500ms Latency": {
+            "type": "Requirement",
+            "mandates": ["Asynchronous FastAPI", "ONNX Runtime", "Vowpal Wabbit (Linear Models)"],
+            "architectures": ["Edge-first Inference"],
+            "edges": ["CONFLICTS_WITH:Heavy_Transformer_Pipelines"]
+        },
+        "600 Token Limit": {
+            "type": "Requirement",
+            "protocol": "FORUM Protocol Micro-tasking",
+            "edges": ["REQUIRES:LangGraph_Task_Decomposition"]
+        },
+        "MLflow": {
+            "type": "Tool",
+            "best_practice": "Offload tracking to remote PostgreSQL or SQLite file to save local VRAM.",
+            "implementation": "mlflow.set_tracking_uri('sqlite:///mlflow.db')",
+            "edges": ["OPTIMIZES:VRAM_Aware_Tracking"]
+        },
+        "Mathematics": {
+            "type": "Logic",
+            "rule": "3B models hallucinate float calculations. Trigger Calculator Tool for all arithmetic.",
+            "edges": ["CALLS:Calculator_Tool"]
+        },
+        "Global_Heuristics": {
+            "type": "Universal_Law",
+            "rules": [
+                "Local-First: Prefer SQLite/DuckDB over Cloud.",
+                "Async-Always: Use FastAPI/AsyncIO for I/O bound tasks.",
+                "VRAM-Aware: Priority to 4-bit GGUF and CPU-preprocessing.",
+                "Minimalist: No external telemetry; zero unnecessary packages."
+            ]
+        }
+    },
+    "mappings": {
+        "JetPack_Optimization": "Use `trtexec` to convert ONNX to TensorRT for 3x throughput.",
+        "Memory_Strategy": "Set `llm_int8_enable_fp32_cpu_offload=True` for hybrid CPU/GPU inference."
+    }
+}

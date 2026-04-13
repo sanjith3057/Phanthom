@@ -1,0 +1,12 @@
+mergekit
+transformers
+accelerate
+torch
+huggingface_hub
+sentencepiece
+protobuf
+streamlit
+googlesearch-python
+fpdf2
+python-docx
+pytest
