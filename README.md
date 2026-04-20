@@ -10,24 +10,6 @@
 [![Hardware](https://img.shields.io/badge/Hardware-RTX%202050%204GB-orange)](BUDGET.md)
 [![Build](https://img.shields.io/badge/Sprint-Day%201%20Week%202-red)](PRODUCT.md)
 
----
-
-## Table of Contents
-
-1. [The Problem](#1-the-problem)
-2. [Research Foundation](#2-research-foundation)
-3. [Solution — What PHANTOM-3B Is](#3-solution--what-phantom-3b-is)
-4. [Architecture & System Design](#4-architecture--system-design)
-5. [Merge Methodology Deep-Dive](#5-merge-methodology-deep-dive)
-6. [Layer Explanation](#6-layer-explanation)
-7. [Workflow — End to End](#7-workflow--end-to-end)
-8. [Benchmark Results](#8-benchmark-results)
-9. [Project Structure](#9-project-structure)
-10. [Quickstart](#10-quickstart)
-11. [Connection to Prior Work](#11-connection-to-prior-work)
-12. [HuggingFace Model Card](#12-huggingface-model-card)
-
----
 
 ## 1. The Problem
 
