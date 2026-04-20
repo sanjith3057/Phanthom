@@ -37,11 +37,15 @@ models/
 outputs/
 datasets/
 database/
+assets/voice_samples/
+assets/pavi_reference.wav
+temp_audio/
 *.safetensors
 *.bin
 *.pt
 *.pth
 *.h5
+
 
 # OS generated files
 .DS_Store

@@ -13,4 +13,11 @@ services:
     environment:
       - PERPLEXICA_API_URL=${PERPLEXICA_API_URL}
       - PERPLEXICA_API_KEY=${PERPLEXICA_API_KEY}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     restart: always

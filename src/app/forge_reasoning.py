@@ -71,8 +71,13 @@ class ForgeEngine:
         return "\n".join(found_facts)
 
     def is_technical_query(self, query: str) -> bool:
-        """Determines if the query is technical enough to warrant specs search."""
-        tech_words = ["how to", "design", "build", "implement", "logic", "algorithm", "architecture", "api", "code", "jetson"]
+        """Determines if the query warrants a live search based on L-layer deduction."""
+        tech_words = [
+            "how to", "design", "build", "implement", "logic", "algorithm", 
+            "architecture", "api", "code", "jetson", "error", "fix",
+            "watch order", "latest news", "current score", "who is", "what happened",
+            "ben 10", "ipl", "weather", "news"
+        ]
         return any(w in query.lower() for w in tech_words)
 
     def assess_complexity(self, query: str) -> str:
@@ -128,9 +133,15 @@ class ForgeEngine:
         full_prompt = (
             f"{system_prompt}\n\n"
             f"{preamble}\n\n"
+            "COGNITIVE PROTOCOL [Character Fusion Active]:\n"
+            "- L/Itachi Layer: Deduce the hidden intent. Observe precisely.\n"
+            "- Batman/Shikamaru Layer: Formulate a high-IQ tactical plan. No waste.\n"
+            "- Raina Finisher Layer: Deliver the complete and final solution.\n\n"
             "Thinking Protocol Active: Use the above FACTS and SPECS to anchor your design logic.\n"
-            f"Context:\n{context}\n\n"
-            f"User: {query}\n\n"
+            "DETERMINISTIC ASSESSMENT: If the query involves live news, match scores, or chronological lists (Watch orders), YOU MUST use a TOOL_CALL now. NO GUESSING.\n"
+            f"Context (Recent History):\n{context}\n\n"
+            f"User Query: {query}\n\n"
+            "PHANTOM (THOUGHTS): [Perform L-Layer Deduction...]\n"
             f"PHANTOM:"
         )
 
@@ -141,7 +152,8 @@ class ForgeEngine:
             return f"⚠️ Model Error: {self.llm['error']}"
 
         # Single-pass greedy generation for 3B stability
-        raw = self.llm(full_prompt, max_new_tokens=768, do_sample=False, tokenizer=self.llm.tokenizer)
+        # We call the pipeline which internally handles the tokenizer
+        raw = self.llm(full_prompt, max_new_tokens=768, do_sample=False)
         response = self._extract_text(raw)
 
         if "PHANTOM:" in response:

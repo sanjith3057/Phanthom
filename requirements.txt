@@ -10,3 +10,6 @@ googlesearch-python
 fpdf2
 python-docx
 pytest
+bitsandbytes
+edge-tts
+tavily-python

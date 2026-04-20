@@ -44,6 +44,26 @@
                 "VRAM-Aware: Priority to 4-bit GGUF and CPU-preprocessing.",
                 "Minimalist: No external telemetry; zero unnecessary packages."
             ]
+        },
+        "Ben 10 Timeline": {
+            "type": "Chronology",
+            "order": [
+                "1. Ben 10 (Original Series)",
+                "2. Secret of the Omnitrix (Movie)",
+                "3. Ben 10: Alien Force",
+                "4. Ben 10: Alien Swarm (Set during AF S2/3)",
+                "5. Ben 10: Ultimate Alien",
+                "6. Ben 10/Generator Rex Special",
+                "7. Ben 10: Omniverse"
+            ],
+            "note": "Reboot (2016) is a separate continuity.",
+            "edges": ["DERIVED_FROM:Omniscience_Search"]
+        },
+        "IPL 2024": {
+            "type": "Live_Data",
+            "status": "Active Season",
+            "best_practice": "Always use Tavily for match scores. Do not rely on pre-trained weights.",
+            "edges": ["CALLS:search_tavily"]
         }
     },
     "mappings": {
